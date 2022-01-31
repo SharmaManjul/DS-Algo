@@ -6,12 +6,19 @@
 #Could do it with one of the built in python functinality but we will build
 #that functinality ourselves.
 
-str = "My name is Manjul."
+string = "My name is Manjul."
+notString = []
+singleString = "a"
 
-def reverse(str):
-    print(str)
-    print(-len(str))
-    reverseStr = str[::-1]
-    print(reverseStr)
+def reverse(string):
+    #Check if type not string and length less than 1.
+    if (type(string) is not str) or (len(string) <= 1):
+        return 'Inavlid type or string length.'
+    reverseArray = []
+    #range(start, stop, step) allows to reverse loop through string
+    for i in range(len(string)-1, -1, -1):
+        reverseArray.append(string[i])
+    #Joins the array back into a string by seperating elements with ''.
+    return ''.join(reverseArray)
 
-reverse(str)
+print(reverse(singleString))
