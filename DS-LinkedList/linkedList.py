@@ -41,6 +41,20 @@ class LinkedList:
         prev.next = newNode
         self.length+=1
 
+    def remove(self, index):
+        if index == 0:
+            self.head = self.head.next
+            self.length -=1
+            return
+        if index > self.length or index < 0:
+            print("Outside the bounds of the linked list, choose another index.")
+            return
+
+        prev = self.traverseToIndex(index-1)
+        cur = self.traverseToIndex(index)
+        prev.next = cur.next
+        self.length -=1
+
 
     def traverseToIndex(self, index):
         counter = 0
@@ -65,4 +79,6 @@ myLinkedList.traverseToIndex(1)
 myLinkedList.insert(0, 89)
 myLinkedList.insert(10, 55)
 myLinkedList.insert(3, 67)
+myLinkedList.printl()
+myLinkedList.remove(3)
 myLinkedList.printl()
