@@ -51,7 +51,7 @@ class LinkedList:
             return
 
         prev = self.traverseToIndex(index-1)
-        cur = self.traverseToIndex(index)
+        cur = prev.next
         prev.next = cur.next
         self.length -=1
 
