@@ -55,6 +55,18 @@ class LinkedList:
         prev.next = cur.next
         self.length -=1
 
+    def reverse(self):
+        leftNode = self.head
+        self.tail =self.head
+        rightNode = leftNode.next
+        while rightNode:
+            temp = rightNode.next
+            rightNode.next = leftNode
+            leftNode=rightNode
+            rightNode = temp
+        self.head.next = None
+        self.head = leftNode
+
 
     def traverseToIndex(self, index):
         counter = 0
@@ -81,4 +93,6 @@ myLinkedList.insert(10, 55)
 myLinkedList.insert(3, 67)
 myLinkedList.printl()
 myLinkedList.remove(3)
+myLinkedList.printl()
+myLinkedList.reverse()
 myLinkedList.printl()
