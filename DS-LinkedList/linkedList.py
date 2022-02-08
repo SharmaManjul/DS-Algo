@@ -28,6 +28,28 @@ class LinkedList:
         self.head = newNode
         self.length += 1
 
+    def insert(self, index, item):
+        newNode = Node(item)
+        if index == 0:
+            self.prepend(item)
+            return
+        if index >= self.length:
+            self.append(item)
+            return
+        prev = self.traverseToIndex(index-1)
+        newNode.next = prev.next
+        prev.next = newNode
+        self.length+=1
+
+
+    def traverseToIndex(self, index):
+        counter = 0
+        curNode = self.head
+        while counter is not index:
+            curNode = curNode.next
+            counter+=1
+        return curNode
+
     def printl(self):
         temp = self.head
         while temp != None:
@@ -39,4 +61,8 @@ class LinkedList:
 myLinkedList = LinkedList(10)
 myLinkedList.append(2)
 myLinkedList.prepend(43)
+myLinkedList.traverseToIndex(1)
+myLinkedList.insert(0, 89)
+myLinkedList.insert(10, 55)
+myLinkedList.insert(3, 67)
 myLinkedList.printl()
