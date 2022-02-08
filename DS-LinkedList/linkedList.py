@@ -5,15 +5,38 @@
 #2. __init__ is a constructor
 #3. None is null
 
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
 class LinkedList:
     def __init__(self, value):
-        self.head = {
-            "value": value,
-            "next": None
-        }
+        self.head = Node(value)
         self.tail = self.head
         self.length = 1
-        print(self.head, self.tail, self.length)
+
+    def append(self, item):
+        newNode = Node(item)
+        self.tail.next = newNode
+        self.tail = newNode
+        self.length += 1
+
+    def prepend(self, item):
+        newNode = Node(item)
+        newNode.next = self.head
+        self.head = newNode
+        self.length += 1
+
+    def printl(self):
+        temp = self.head
+        while temp != None:
+            print(temp.value , end = ' ')
+            temp = temp.next
+        print()
+        print('Length = '+str(self.length))
 
 myLinkedList = LinkedList(10)
-print(myLinkedList)
+myLinkedList.append(2)
+myLinkedList.prepend(43)
+myLinkedList.printl()
