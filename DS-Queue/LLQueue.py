@@ -14,7 +14,7 @@ class Stack:
         if self.length > 0:
             return self.first.value
 
-    def push(self, value):
+    def enqueue(self, value):
         if self.length == 0:
             self.first = Node(value)
             self.last = self.first
@@ -25,7 +25,7 @@ class Stack:
             self.last = newElement
             self.length +=1
 
-    def pop(self):
+    def dequeue(self):
         if self.length == 0:
             return "Error stack empty"
         elif(self.first == self.last):
@@ -46,13 +46,13 @@ class Stack:
   #isEmpty
 
 myStack = Stack()
-myStack.push("google")
-myStack.push("poogle")
-myStack.push("myspace")
-myStack.push("amz")
+myStack.enqueue("google")
+myStack.enqueue("poogle")
+myStack.enqueue("myspace")
+myStack.enqueue("amz")
 print(myStack.peek())
 myStack.printl()
-myStack.pop()
+myStack.dequeue()
 myStack.printl()
-myStack.pop()
+myStack.dequeue()
 myStack.printl()
