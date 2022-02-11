@@ -30,28 +30,18 @@ class BinarySearchTree:
     def lookup(self, value):
         lookNode = Node(value)
         curNode = self.root
-        while True:
-            if lookNode.value == curNode.value:
+        if (self.root == None):
+            print("No tree available")
+            return False
+        while curNode:
+            if lookNode.value > curNode.value:
+                curNode = curNode.right
+            elif lookNode.value < curNode.value:
+                curNode = curNode.left
+            else:
                 print("Value found in tree!")
                 return self
-            elif lookNode.value < curNode.value:
-                if lookNode.value == curNode.value:
-                    print("Value found in tree!")
-                    return self
-                elif curNode.left == None:
-                    print("Value not found in tree.")
-                    return self
-                else:
-                    curNode = curNode.left
-            elif lookNode.value > curNode.value:
-                if lookNode.value == curNode.value:
-                    print("Value found in tree!")
-                    return self
-                elif curNode.right == None:
-                    print("Value not found in tree.")
-                    return self
-                else:
-                    curNode = curNode.right
+        print("Value not found :(")
 
 
 def printTree(node, level=0):
