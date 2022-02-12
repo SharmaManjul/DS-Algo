@@ -44,59 +44,61 @@ class BinarySearchTree:
         print("Value not found :(")
 
     def remove(self, value):
-        removeNode = Node(value)
-        prevNode = Node(None)
-        curNode = self.root
-        if (self.root == None):
-            print("No tree available")
+        if not self.root:
             return False
+        parentNode = None
+        curNode = self.root
         while curNode:
-            if removeNode.value > curNode.value:
-                prevNode = curNode
+            if value > curNode.value:
+                print("curNode to right")
+                parentNode = curNode
                 curNode = curNode.right
-            elif removeNode.value < curNode.value:
-                prevNode = curNode
+            elif value < curNode.value:
+                print("curNode to left")
+                parentNode = curNode
                 curNode = curNode.left
-            elif removeNode.value == curNode.value:
+            elif value == curNode.value:
+                print("Value found to remove!")
                 #Right of current Node is empty
                 if curNode.right == None:
-                    if prevNode == None:
+                    if parentNode == None:
                         self.root = curNode.left
                     else:
-                        if curNode.value > prevNode.value:
-                            prevNode.right = curNode.left
+                        if curNode.value > parentNode.value:
+                            parentNode.right = curNode.left
                         elif curNode.value < prevnode.value:
-                            prevNode.left = curNode.left
+                            parentNode.left = curNode.left
                 #Left of right of current node is empty
                 elif curNode.right.left == None:
+                    print("Made it")
                     curNode.right.left = curNode.left
-                    if prevNode == None:
+                    if parentNode == None:
                         self.root = curNode.right
                     else:
-                        if curNode.value > prevNode.value:
-                            prevNode.right = curNode.right
-                        elif curNode.value < prevnode.value:
-                            prevNode.left = curNode.right
+                        if curNode.value > parentNode.value:
+                            parentNode.right = curNode.right
+                        elif curNode.value < parentNode.value:
+                            parentNode.left = curNode.right
                 else:
                     #Find the right child's leftmost child
                     leftMost = curNode.right.left
-                    leftMostParent = curNode.Right
+                    leftMostParent = curNode.right
                     while leftMost.left is not None:
                         leftMostParent = leftMost
                         leftMost = leftMost.left
 
                     leftMostParent.left = leftMost.right
                     leftMost.left = curNode.left
-                    leftMost.right = curNode.Right
+                    leftMost.right = curNode.right
 
-                    if prevNode == None:
+                    if parentNode == None:
                         self.root = leftMost
                     else:
-                        if curNode.value < prevNode.value:
-                            prevNode.left = leftMost
+                        if curNode.value < parentNode.value:
+                            parentNode.left = leftMost
                         elif curNode.value > prevNode.value:
-                            prevNode.right = leftMost
-
+                            parentNode.right = leftMost
+                return True
 def printTree(node, level=0):
     if node != None:
         printTree(node.left, level + 1)
@@ -113,5 +115,5 @@ tree.insert(15)
 tree.insert(1)
 printTree(tree.root, 0)
 tree.lookup(6)
-tree.remove(6)
+tree.remove(170)
 printTree(tree.root, 0)
