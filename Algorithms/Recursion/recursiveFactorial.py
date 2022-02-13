@@ -1,7 +1,7 @@
 #Find the factorial using recursion and iteration.
 
 #Recursively
-def recursiveFactorial(value):
+def recursiveFactorial(value): #O(n)
     #Base Case
     if value == 0:
         return 1
@@ -10,7 +10,7 @@ def recursiveFactorial(value):
 print(recursiveFactorial(800))
 
 #Iteratively
-def iterativeFactorial(value):
+def iterativeFactorial(value): #O(2^n)
     factorial = 1
     for i in range(1,value+1):
         factorial *= i

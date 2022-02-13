@@ -10,7 +10,7 @@ def fibonacciIteratively(index):
         fibonacci.append(fibonacci[i]+fibonacci[i-1])
     print(fibonacci[index])
 
-fibonacciIteratively(12)
+fibonacciIteratively(30)
 
 #Recursively:
 def fibonacciRecursively(index):
@@ -19,4 +19,4 @@ def fibonacciRecursively(index):
 
     return fibonacciRecursively(index-1) + fibonacciRecursively(index-2)
 
-print(fibonacciRecursively(12))
+print(fibonacciRecursively(30))
