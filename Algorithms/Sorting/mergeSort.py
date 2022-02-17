@@ -8,26 +8,28 @@ def mergesort(arr):
     if lenArr == 1:
         return arr
     #split the array in half.
-    left,right=[],[]
-    print(lenArr/2)
-    for i in range(lenArr):
-        if i<=(lenArr/2):
-            left.append(arr[i])
-        else:
-            right.append(arr[i])
-    print(arr, left, right)
+    half=lenArr//2
+    left=arr[:half]
+    right=arr[half:]
+    print('Left {}'.format(left))
+    print('Right {}'.format(right))
     return merge(mergesort(left),mergesort(right))
 
 def merge(left,right):
-    leftLen,rightLen=len(left),len(right)
-    leftIndex,rightIndex=0,0
+    leftIndex = 0
+    rightIndex = 0
     combinedArray=[]
-    while leftIndex<leftLen and rightIndex<rightLen:
-        #Check if left less than right
-        #   if true then append to array
-        #else
-        #   append right to array
+    while leftIndex<len(left) and rightIndex<len(right):
+        print("left", left[leftIndex], "right", right[rightIndex])
+        if left[leftIndex] < right[rightIndex]:
+            combinedArray.append(left[leftIndex])
+            leftIndex += 1
+        else:
+            combinedArray.append(right[rightIndex])
+            rightIndex += 1
 
-        #return array
+    print(left,right)
+    print(combinedArray+left[leftIndex:]+right[rightIndex:])
+    return combinedArray+left[leftIndex:]+right[rightIndex:]
 
 print(mergesort(arr))
