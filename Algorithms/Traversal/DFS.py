@@ -104,6 +104,12 @@ class BinarySearchTree:
     def dfsInOrder(self):
         return traverseInOrder(self.root, [])
 
+    def dfsPreOrder(self):
+        return traversePreOrder(self.root, [])
+
+    def dfsPostOrder(self):
+        return traversePostOrder(self.root, [])
+
 def traverseInOrder(curNode, list):
     print(curNode.value)
     if curNode.left:
@@ -113,6 +119,23 @@ def traverseInOrder(curNode, list):
         traverseInOrder(curNode.right, list)
     return list
 
+def traversePreOrder(curNode, list):
+    print(curNode.value)
+    list.append(curNode.value)
+    if curNode.left:
+        traversePreOrder(curNode.left, list)
+    if curNode.right:
+        traversePreOrder(curNode.right, list)
+    return list
+
+def traversePostOrder(curNode, list):
+    print(curNode.value)
+    if curNode.left:
+        traversePostOrder(curNode.left, list)
+    if curNode.right:
+        traversePostOrder(curNode.right, list)
+    list.append(curNode.value)
+    return list
 def printTree(node, level=0):
     if node != None:
         printTree(node.left, level + 1)
@@ -129,3 +152,5 @@ tree.insert(15)
 tree.insert(1)
 printTree(tree.root, 0)
 print(tree.dfsInOrder())
+print(tree.dfsPreOrder())
+print(tree.dfsPostOrder())
