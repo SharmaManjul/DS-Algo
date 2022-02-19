@@ -117,6 +117,17 @@ class BinarySearchTree:
 
         return list
 
+    def bfsRecursive(self, list, queue):
+        if len(queue) == 0:
+            return list
+        curNode = queue.pop(0)
+        list.append(curNode.value)
+        if curNode.left:
+            queue.append(curNode.left)
+        if curNode.right:
+            queue.append(curNode.right)
+        return self.bfsRecursive(list, queue)
+
 def printTree(node, level=0):
     if node != None:
         printTree(node.left, level + 1)
@@ -133,3 +144,4 @@ tree.insert(15)
 tree.insert(1)
 printTree(tree.root, 0)
 print(tree.bfs())
+print(tree.bfsRecursive([],[tree.root]))
