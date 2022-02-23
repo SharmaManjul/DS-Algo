@@ -10,7 +10,6 @@
 #refer to a value defined in the enclosing function. The enclosing function must
 #return the nested function.
 
-
 def addto100():
     cache = dict()
     def adder(n):
