@@ -9,7 +9,7 @@ def maxProfit(self, prices):
     for i in range(lenP):
         for j in range(i+1, lenP):
             diff.append(prices[j]-prices[i])
-            
+
     maxi = max(diff)
     if maxi > 0:
         return maxi
@@ -29,5 +29,19 @@ def maxProfit(self, prices):
             if maxProfit < diff:
                 maxProfit = diff
             sell+=1
+
+    return maxProfit
+
+#More efficient memory approach.
+def maxProfit(self, prices)
+    maxProfit, buy, sell = 0, 0, 1
+
+    while sell < len(prices):
+        if prices[buy] < prices[sell]:
+            profit = prices[sell] - prices[buy]
+            maxProfit = max(maxProfit, profit)
+        else:
+            buy = sell
+        sell+=1
 
     return maxProfit
