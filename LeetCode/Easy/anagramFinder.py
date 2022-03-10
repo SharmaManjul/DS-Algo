@@ -19,3 +19,6 @@ def isAnagram(self, s, t):
         else:
             return False
     return True
+
+#Using the Counter data structure in python
+return Counter(s) == Counter(t)
