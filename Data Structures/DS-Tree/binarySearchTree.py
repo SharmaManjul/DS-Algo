@@ -106,7 +106,7 @@ def printTree(node, level=0):
         printTree(node.right, level + 1)
 
 tree = BinarySearchTree();
-tree.insert(9)
+tree.insert(0)
 tree.insert(4)
 tree.insert(6)
 tree.insert(20)
