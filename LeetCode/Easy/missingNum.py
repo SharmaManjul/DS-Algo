@@ -11,7 +11,14 @@ def missingNumber(self, nums):
             return nums[i]+1
     return 0
 
-# Optimized approach using XOR and bit manipulation with TC=O(n) and SC=O(1)
+#optimized approach using total sum subtraction with TC=O(2n) and SC=O(1)
+def missingNumber(self, nums):
+    res = 0
+    for i in range(len(nums)):
+        res += (i - nums[i])
+    return res+i+1
+
+#Best approach using XOR and bit manipulation with TC=O(n) and SC=O(1)
 def missingNumber(self, nums):
     xor = 0
     for i in range(len(nums)):
