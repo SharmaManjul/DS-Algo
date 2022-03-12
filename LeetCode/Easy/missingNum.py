@@ -10,3 +10,10 @@ def missingNumber(self, nums):
         if nums[i]+1 != nums[i+1]:
             return nums[i]+1
     return 0
+
+# Optimized approach using XOR and bit manipulation with TC=O(n) and SC=O(1)
+def missingNumber(self, nums):
+    xor = 0
+    for i in range(len(nums)):
+        xor = xor ^ i ^ nums[i]
+    return xor^i+1
