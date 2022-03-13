@@ -17,3 +17,13 @@ def mergeTwoLists(self, list1, list2):
 
     return head.next
 
+#Recursively
+ def mergeTwoLists(self, list1, list2):
+    if list1 == None or list2 == None:
+        return list1 or list2
+    if list1.val < list2.val:
+        list1.next = self.mergeTwoLists(list1.next, list2)
+        return list1
+    else:
+         list2.next = self.mergeTwoLists(list1, list2.next)
+        return list2
