@@ -1,5 +1,6 @@
 #Check if given tree is symmetrical from the middle.
 
+#Recursively using outpair and inpair technique
 class Solution(object):
     def isSymmetric(self, root):
         if root is None:
@@ -19,3 +20,20 @@ class Solution(object):
             return outPair and inPair
         else:
             return False
+
+#Iteratively using a while loop with TC=O(n) and SC=O(n)
+    def isSymmetric(self, root):
+        if not root:
+            return False
+        stack = [(root.left, root.right)]
+
+        while stack:
+            l, r = stack.pop()
+            if not l and not r:
+                continue
+            if not l or not r or l.val != r.val:
+                return False
+            stack.append((l.left, r.right))
+            stack.append((l.right, r.left))
+
+        return True
