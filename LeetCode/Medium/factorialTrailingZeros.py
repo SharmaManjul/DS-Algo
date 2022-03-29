@@ -18,3 +18,12 @@ def trailingZeroes(self, n):
         k -= 1
 
     return zeros
+
+#Optimized solution by dividing by 5 and its powers. TC = O(log(n)) and SC = O(1)
+#TC is actually log(n) base 5 since we had to multiply n fives to get to our solution.
+def trailingZeroes(self, n):
+    zeros, k = 0, 5
+    while k <= n:
+        zeros += n // k
+        k *= 5
+    return zeros
