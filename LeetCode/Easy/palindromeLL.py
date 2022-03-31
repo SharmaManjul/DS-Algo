@@ -13,3 +13,23 @@ def isPalindrome(self, head):
         k -= 1
     return True
 
+#Optimized solution: TC=O(n) and SC=O(1)
+def isPalindrome(self, head):
+     #Find the middle node.
+    slow, fast = head, head
+     while fast and fast.next:
+         slow =  slow.next
+         fast = fast.next.next
+    #Reverse the other half
+    left, right = slow, slow.next
+     left.next = None
+     while right:
+        temp = right.next
+        right.next = left
+        left, right = right, temp
+    #Check if LL is a palindrome
+     while left:
+        if head.val != left.val:
+            return False
+        head, left = head.next, left.next
+     return True
