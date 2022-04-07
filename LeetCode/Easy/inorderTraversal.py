@@ -12,3 +12,18 @@ def inorderTraversal(self, root):
             return list
     traverser(root, list)
     return list
+
+#Using iteration: TC=O(n) SC=O(n)
+def inorderTraversal(self, root):
+    stack = []
+    res = []
+    while True:
+        while root:
+            stack.append(root)
+            root = root.left
+        if not stack:
+            return res
+        else:
+            node = stack.pop()
+            res.append(node.val)
+            root = node.right
