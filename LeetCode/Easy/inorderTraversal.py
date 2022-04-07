@@ -1,4 +1,4 @@
-#Return list with inorder traversal.
+#Traverse Binary tree in format <left><root><right>
 
 #Using recursion: TC=O(n) and SC=O(n)
 def inorderTraversal(self, root):
