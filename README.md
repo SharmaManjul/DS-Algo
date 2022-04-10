@@ -13,4 +13,6 @@ Repository to document and showcase data-structures and algorithms knowledge. He
 - Algorithms
   - Recursion
   - Sorting
+  - Memoization
+  - Traversal
  
