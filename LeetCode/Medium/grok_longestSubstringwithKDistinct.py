@@ -13,12 +13,12 @@ def longest_substring_with_k_distinct(str1, k):
             str_map[str1[w_end]] = 1
         print(str_map)
         while len(str_map) > k:
-            max_len = max(max_len, w_end-w_start)
             if str_map[str1[w_start]] > 1:
                 str_map[str1[w_start]] -= 1
             else:
                 del str_map[str1[w_start]]
             w_start += 1
+        max_len = max(max_len, w_end-w_start+1)
     return max_len
 
 
