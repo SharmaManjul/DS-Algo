@@ -1,7 +1,7 @@
 #Find longest substring of k distinct characters.
 
 #Using Sliding window with a hasmap to keep track of characters. Make sure to check max length by end-start instead of
-#hash map len. TC = O(n) } O(n+n) since while loop executes once per element and SC=O(n)
+#hash map len. TC = O(n) } O(n+n) since while loop executes once per element and SC=O(k) since we only store only k+1 elements.
 def longest_substring_with_k_distinct(str1, k):
     str_map = {}
     w_start=max_len=0
