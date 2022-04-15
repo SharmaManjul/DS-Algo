@@ -1,6 +1,8 @@
 #Find the indexes of the different way in which words can be combined and exist in s.
 
 #Trick to think a the word level instead of the individual letter level. Most of the code is just to help do that.
+#TC = O(n * m * l) and SC = O(m + n)
+#Where n is lenght of s, m is the number of elements in words and len is the len of those words.
 def findSubstring(self, s, words):
     if len(s) == 0 or len(words) == 0:
         return []
