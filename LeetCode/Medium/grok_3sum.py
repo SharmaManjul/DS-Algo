@@ -38,3 +38,4 @@ def threeSum(self, nums):
         triplet_finder(nums, -nums[first_index], first_index + 1, triplet)
 
     return triplet
+
