@@ -1,7 +1,8 @@
+#Trick is to make sure you are not increamenting i when decreasing right since i<=right.
+
+#TC= O(N) and SC= O(1)
 def sortColors(self, nums):
-
     low, high, i = 0, len(nums) - 1, 0
-
     while i <= high:
         if nums[i] == 0:
             nums[i], nums[low] = nums[low], nums[i]
