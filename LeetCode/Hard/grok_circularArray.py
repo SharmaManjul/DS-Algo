@@ -32,3 +32,6 @@ def circularArrayLoop(self, nums):
         if slow != -1 and slow == fast:
             return True
     return False
+
+#If you maintain a hash map of all the number that don't result in cycles then we cna reduce the TC to O(N) as we would
+# only need to loop once through the array but that would mean our SC is now O(N).
