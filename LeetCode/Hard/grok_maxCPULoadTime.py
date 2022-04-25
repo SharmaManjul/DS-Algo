@@ -1,3 +1,5 @@
+#TC=O(N logN) and SC=O(N)
+
 from heapq import *
 
 class job:
