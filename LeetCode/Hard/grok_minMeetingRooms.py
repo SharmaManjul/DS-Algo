@@ -1,3 +1,5 @@
+from heapq import *
+
 class Meeting:
     def __init__(self, start, end):
         self.start = start
@@ -7,6 +9,21 @@ class Meeting:
         return self.end < other.end
 
 def min_meeting_rooms(meetings):
+    meetings.sort(key=lambda x: x.start)
+
+    min_rooms, room_counter = 0, 0
+    min_heap = []
+
+    for meeting in meetings:
+        while len(min_heap) > 0 and meeting.start >= min_heap[0].end:
+            heappop(min_heap)
+            room_counter -= 1
+        heappush(min_heap, meeting)
+        room_counter += 1
+        min_rooms = max(min_rooms, room_counter)
+    return min_rooms
+
+def min_meeting_rooms_two_pointer(meetings):
     start_times = sorted([meeting.start for meeting in meetings])
     end_times = sorted([meeting.end for meeting in meetings])
 
