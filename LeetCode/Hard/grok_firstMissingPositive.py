@@ -1,5 +1,9 @@
 #TC=O(N) and SC=(1)
 
+#Trick is to perform cyclic sort only within the range 1 to n and not care about the rest as the rest will populate the
+# missing element and the first incorrect field we encounter after sorting will be the min positive num. Remember 0 is
+#not a positive number.
+
 def firstMissingPositive(self, nums):
     i = 0
     while i < len(nums):
