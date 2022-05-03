@@ -19,4 +19,4 @@ def countAndSay(self, n):
     result = '1'
     for i in range(n - 1):
         result = counterSayer(result)
-    return result 
+    return result
