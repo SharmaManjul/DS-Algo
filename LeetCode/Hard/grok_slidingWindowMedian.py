@@ -1,3 +1,5 @@
+#TC = O(N * K) and SC = O(K)
+
 class Solution:
     def __init__(self):
         self.min_heap, self.max_heap = [], []
