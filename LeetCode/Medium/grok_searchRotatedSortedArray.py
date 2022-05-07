@@ -1,4 +1,4 @@
-# TC = O(logN) ans SC=(1)
+# TC = O(logN) and worst case of duplicates O(N) and SC=(1)
 
 def search_rotated_array(arr, key):
     start, end = 0, len(arr)-1
@@ -9,7 +9,9 @@ def search_rotated_array(arr, key):
         if arr[mid] == key:
             return mid
 
-        # shrinking window to accoutn for duplicates
+        # shrinking window to account for duplicates
+        # if entire list is duplicate and key is not the duplicate then we will end up looping N/2 times making the worst
+        # case be O(N)
         if arr[start] == arr[mid] and arr[end] == arr[mid]:
             start += 1
             end -= 1
