@@ -54,6 +54,7 @@ def findMin(self, arr: List[int]) -> int:
 
 # Rotation with duplication.
 
+# TC = O(log N) but worst case O(N) if entire list is duplicate and SC = O(1)
     def findMin(self, arr: List[int]) -> int:
         start, end = 0, len(arr) - 1
 
