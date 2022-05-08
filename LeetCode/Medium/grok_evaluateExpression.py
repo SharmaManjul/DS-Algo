@@ -31,3 +31,37 @@ def diffWaysToCompute(self, expression: str) -> List[int]:
                             results.append(left * right)
 
     return results
+
+#Memoized version:
+    def diffWaysToCompute(self, expression: str) -> List[int]:
+        return self.result_finder({}, expression)
+
+    def result_finder(self, map, expression):
+        if expression in map:
+            return map[expression]
+
+        results = []
+
+        if '-' not in expression and '+' not in expression and '*' not in expression:
+            results.append(int(expression))
+        else:
+            for i in range(len(expression)):
+                char = expression[i]
+
+                # Check if current char is an operation.
+                if not char.isdigit():
+                    # Split into two parts and evaluate them separately.
+                    left_part = self.diffWaysToCompute(expression[0:i])
+                    right_part = self.diffWaysToCompute(expression[i + 1:])
+
+                    for left in left_part:
+                        for right in right_part:
+                            if char == '+':
+                                results.append(left + right)
+                            elif char == '-':
+                                results.append(left - right)
+                            if char == '*':
+                                results.append(left * right)
+
+        map[expression] = results
+        return results
