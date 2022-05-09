@@ -1,3 +1,5 @@
+# TC = O(N * logK) and SC = O(K)
+
 from heapq import *
 
 def find_k_largest_numbers(nums, k):
