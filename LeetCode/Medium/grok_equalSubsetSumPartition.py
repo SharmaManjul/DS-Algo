@@ -45,7 +45,7 @@
 
 
 # Top down approach using recurssion with memoization.
-# TC = O(2^N) and SC = O(N)
+# TC = O(N * S) and SC = O(N * S) where S is the total sum.
 def can_partition(num):
     # First lets just calculate the total sum possinle of the list so that the two subsets will have their sum as the
     # total sum / 2 and not we just need to look at all the possible combinations of subset and check if we have one that
