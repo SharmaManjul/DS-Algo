@@ -111,3 +111,60 @@ def main():
 
 main()
 
+
+
+# Bottom up approach using dynamic programming and printing out the selected weights.
+# TC = O(N*C) and SC = O(N*C)
+def solve_knapsack(profits, weights, capacity):
+    # Edge cases
+    index_len = len(profits)
+    if capacity <= 0 or index_len == 0  or index_len != len(weights):
+        return 0
+
+    # 2-Dimensional list to store the table with x axis as the capacities starting from 0 and y axis as the indexes
+    # starting at 0.
+    knapsack_list = [[x for x in range(capacity+1)] for y in range(index_len)]
+
+    for i in range(index_len):
+        for c in range(capacity+1):
+            profit1, profit2 = 0, 0
+
+            if c == 0:
+                knapsack_list[i][c] = 0
+
+            if i == 0 and weights[i] <= c:
+                knapsack_list[i][c] = profits[i]
+
+            if weights[i] <= c:
+                profit1 = profits[i] + knapsack_list[i-1][c-weights[i]]
+
+            profit2 = knapsack_list[i-1][c]
+
+            knapsack_list[i][c] = max(profit1, profit2)
+
+    weights_printer(profits, weights, capacity, knapsack_list)
+
+    return knapsack_list[index_len-1][capacity]
+
+def weights_printer(profits, weights, capacity, knapsack_list):
+    print("The selected weights were: ")
+    n = len(profits)
+    total_profit = knapsack_list[n-1][capacity]
+    for i in range(n-1, 0, -1):
+        if total_profit !=  knapsack_list[i-1][capacity]:
+            print(weights[i], " , ")
+            total_profit -= profits[i]
+            capacity -= weights[i]
+
+    if total_profit != 0:
+        print(weights[0])
+
+
+
+
+def main():
+    print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 7))
+    print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 6))
+
+main()
+
