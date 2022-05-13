@@ -171,7 +171,7 @@
 
 
 # Bottom up approach using dynamic programming and 2 indexes
-# TC = O(2*C) = O(C) and SC = O(C)
+# TC = O(N*C) and SC = O(C)
 def solve_knapsack(profits, weights, capacity):
     # Edge cases
     index_len = len(profits)
@@ -207,3 +207,51 @@ def main():
     print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 6))
 
 main()
+
+
+
+# Bottom up approach using dynamic programming using only single array
+# TC = O(N*C) and SC = O(C)
+def solve_knapsack(profits, weights, capacity):
+    # Edge cases
+    index_len = len(profits)
+    if capacity <= 0 or index_len == 0  or index_len != len(weights):
+        return 0
+
+    # 2-Dimensional list to store the table with x axis as the capacities starting from 0 and y axis as the indexes
+    # starting at 0.
+    knapsack_list = [x for x in range(capacity+1)]
+
+    for c in range(capacity+1):
+        if weights[0] <= c:
+            knapsack_list[c] = profits[0]
+
+    # Here we use a 1-D knapsack list which we populate the items for each capacity backwards, this is done so that we
+    # can access the previous items profits while calculating thew cur profit since they get overridden if we start from
+    # the front. This reduces our space complexity to linear.
+    for i in range(1, index_len):
+        for c in range(capacity, -1, -1):
+            profit1, profit2 = 0, 0
+
+            if c == 0:
+                knapsack_list[c] = 0
+
+            if i == 0 and weights[i%2] <= c:
+                knapsack_list[c] = profits[i]
+
+            if weights[i] <= c:
+                profit1 = profits[i] + knapsack_list[c-weights[i]]
+
+            profit2 = knapsack_list[c]
+
+            knapsack_list[c] = max(profit1, profit2)
+
+    return knapsack_list[capacity]
+
+
+def main():
+    print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 7))
+    print(solve_knapsack([1, 6, 10, 16], [1, 2, 3, 5], 6))
+
+main()
+
