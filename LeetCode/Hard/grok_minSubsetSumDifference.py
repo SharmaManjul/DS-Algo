@@ -27,6 +27,8 @@
 # combinations of the sums and elements.
 # If the last element of the dp array is False that means that the a set of sum = sum/2 doesn't exist so we need to look
 # for a true value in the same index.
+
+# TC = O(N * S) and SC = O(N * S)
 def can_partition(nums):
     # Edge case
     if not nums:
