@@ -4,11 +4,11 @@ class UnionFind:
         # Initialize array of length size with the indexes as the value. Initially the root of all elements is itself.
         self.root = [x for x in range(size)]
 
-    def find(self, x):
+    def find(self, x): # O(1)
         # Reuturn the value of index x since that will be its root.
         return self.root[x]
 
-    def union(self, x, y):
+    def union(self, x, y): # O(N)
         # Get the root of both x and y.
         root_x = self.find(x)
         root_y = self.find(y)
@@ -18,7 +18,7 @@ class UnionFind:
                 if self.root[i] == root_y:
                     self.root[i] = root_x
 
-    def connected(self, x, y):
+    def connected(self, x, y): # O(1)
         return self.root[x] == self.root[y]
 
 
