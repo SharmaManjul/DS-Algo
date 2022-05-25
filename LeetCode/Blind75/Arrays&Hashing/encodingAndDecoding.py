@@ -1,3 +1,8 @@
+# The trick is to use the length of the word and a # as the divider for the word when combined into string. The lenght
+# will let the decoder know till when to loop and grab valid character and the # will let the decoder know when to start
+# the looping. This way the word can have any charcaters and we will still know when they start and end by using this
+# divider combination.
+
 class Codec:
     # O(N)
     def encode(self, strs: List[str]) -> str:
