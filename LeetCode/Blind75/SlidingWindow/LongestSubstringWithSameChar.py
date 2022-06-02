@@ -29,7 +29,7 @@ class Solution:
             freq_map[s[end]] = 1 + freq_map.get(s[end], 0)
             max_freq = max(max_freq, freq_map[s[end]])
 
-            if ((end - start + 1) - max(freq_map.values())) > k:
+            if ((end - start + 1) - max_freq > k:
                 freq_map[s[start]] -= 1
                 start += 1
 
